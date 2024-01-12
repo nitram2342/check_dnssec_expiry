@@ -100,7 +100,7 @@ fi
 # Check the resolver to properly validate DNSSEC at all (if he doesn't, every further test is futile and a waste of bandwith)
 checkResolverDoesDnssecValidation=$(dig +nocmd +nostats +noquestion $alwaysFailingDomain @${resolver} | grep "opcode: QUERY" | grep "status: SERVFAIL")
 if [[ -z $checkResolverDoesDnssecValidation ]]; then
-	echo "WARNING: Resolver seems to not validate DNSSEC signatures - going further seems hopeless right now."
+	echo "WARNING: Resolver ${resolver} seems to not validate DNSSEC signatures - going further seems hopeless right now."
 	exit 1
 fi
 
